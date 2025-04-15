@@ -1,12 +1,11 @@
 import streamlit as st
 import pandas as pd
 import pickle
-
+import joblib
 # Load model and encoders
 @st.cache_resource
 def load_model_and_encoders():
-    with open('rf_model.pkl', 'rb') as f:
-        rf_model = pickle.load(f)
+    rf_model = joblib.load('rf_model.joblib')
     with open('encoders.pkl', 'rb') as f:
         encoders = pickle.load(f)
     with open('target_encoder.pkl', 'rb') as f:
